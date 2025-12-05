@@ -14,7 +14,7 @@ app.get('/', (req : Request, res : Response) => {
   res.send('Hello World!')
 })
 
-app.use('/api/v1/auth ', userRouter,); 
+app.use('/api/v1/auth/ ', userRouter,); 
 
 app.use('/api/v1/', vehiclesRouter,);
 

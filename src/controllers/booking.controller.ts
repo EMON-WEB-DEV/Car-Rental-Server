@@ -7,7 +7,7 @@ const createBooking = async (req : Request, res : Response) => {
         const result = await bookingService.bookingInitialData(req.body);  
  return res.status(201).json({
     success: true,
-    massage : 'vehicles created successfully',
+    massage : 'booking created successfully',
     data : result.rows[0]
   })
 

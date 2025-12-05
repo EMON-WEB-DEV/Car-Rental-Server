@@ -29,7 +29,7 @@ await pool.query(`
     type VARCHAR(50) NOT NULL,
     registration_number VARCHAR(100) UNIQUE NOT NULL,
     daily_rent_price NUMERIC(10, 2) NOT NULL,
-    availability_status BOOLEAN DEFAULT TRUE
+    availability_status VARCHAR(50) NOT NULL
   );
 `);
 await pool.query(`

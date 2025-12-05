@@ -15,7 +15,7 @@ const createVehicle = async (req : Request, res : Response) => {
   catch (error) {
        return res.status(500).json({
           success: false,
-          message: 'Server Error',
+          message: 'Server Error ...',
           error: error
         });
   }
@@ -28,7 +28,7 @@ const getVehicle = async (req : Request, res : Response) => {
  return res.status(201).json({
     success: true,
     massage : 'vehicles get successfully',
-    data : result .rows[0]
+    data : result .rows
   })
 
   }

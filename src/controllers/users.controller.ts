@@ -28,7 +28,8 @@ const getUser = async (req : Request, res : Response) => {
  return res.status(201).json({
     success: true,
     massage : 'User get successfully',
-    data : result .rows[0]
+    data : result .rows
+  
   })
 
   }

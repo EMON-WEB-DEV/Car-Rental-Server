@@ -12,7 +12,7 @@ app.get('/', (req : Request, res : Response) => {
   res.send('Hello World!')
 })
 
-app.use('/api/v1/users', userRouter,); 
+app.use('/api/v1/auth/signup', userRouter,); 
 
 
 

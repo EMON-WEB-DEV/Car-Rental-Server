@@ -7,7 +7,7 @@ const createUser = async (req : Request, res : Response) => {
         const result = await usersService.userInitialData(req.body);  
  return res.status(201).json({
     success: true,
-    massage : 'User created successfully',
+    massage : 'User registered successfully',
     data : result.rows[0]
   })
 
@@ -24,11 +24,11 @@ const createUser = async (req : Request, res : Response) => {
 const getUser = async (req : Request, res : Response) => {
   
   try {    
-        const result = await usersService.userInitialData(req.body);  
+        const result = await usersService.userGetData();  
  return res.status(201).json({
     success: true,
     massage : 'User get successfully',
-    data : result
+    data : result .rows[0]
   })
 
   }

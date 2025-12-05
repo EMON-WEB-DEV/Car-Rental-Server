@@ -4,6 +4,7 @@ const port = 5050
 import { initDb,  } from './db/config';
 import { userRouter } from './routes/users.routes';
 import { vehiclesRouter } from './routes/vehicles.routes';
+import { bookingRouter } from './routes/booking.routes';
 
 
 app.use(express.json());
@@ -16,6 +17,8 @@ app.get('/', (req : Request, res : Response) => {
 app.use('/api/v1/auth ', userRouter,); 
 
 app.use('/api/v1/', vehiclesRouter,);
+
+app.use('/api/v1/', bookingRouter,);
 
 
 

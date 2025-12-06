@@ -60,6 +60,8 @@ const putUserData = async (req: Request, res: Response) => {
     }
 }
 
+const getUserById = async (req: Request, res: Response) => { try { const id = parseInt(req.params.id as string); const result = await usersService.getUserById(id); return res.status(200).json({ success: true, message: 'User updated successfully', data: result.rows[0] }); } catch (error) { return res.status(500).json({ success: false, message: 'Server Error', error: error }); } }
+
 const deleteUserData = async (req: Request, res: Response) => {
     try {
         const id = parseInt(req.params.id as string);
@@ -81,6 +83,7 @@ const deleteUserData = async (req: Request, res: Response) => {
 export const usersController = {
         createUser,
         getUser,
+        getUserById,
         putUserData,
         deleteUserData
 }

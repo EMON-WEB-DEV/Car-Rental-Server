@@ -6,6 +6,7 @@ const router = Router();
 
 router.post('/auth/signup',usersController.createUser);
 router.get('/auth/signup',auth(), usersController.getUser);
+router.get('/auth/signup/:id',auth(), usersController.getUserById);
 router.put('/auth/signup/:id',auth(),usersController.putUserData);
 router.delete('/auth/signup/:id',auth(),usersController.deleteUserData);
 

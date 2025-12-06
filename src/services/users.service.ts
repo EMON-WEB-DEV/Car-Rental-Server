@@ -30,6 +30,14 @@ const userGetData = async () => {
   return result;
 };
 
+const getUserById = async (id: number) => {
+        const result = await pool.query(`
+    SELECT id, name, email, phone, role
+    FROM users
+    WHERE id = $1
+  `, [id]);
+        return result;
+};
 
 const putUserData = async (id: number, payload: Record<string, any>) => {
         const {name , email , password ,phone , role} = payload;
@@ -58,6 +66,7 @@ const deleteUserData = async (id: number) => {
 export const usersService = {
         userInitialData ,
         userGetData ,
+        getUserById,
         putUserData,
         deleteUserData
 }

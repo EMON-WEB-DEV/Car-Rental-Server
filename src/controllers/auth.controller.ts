@@ -21,7 +21,7 @@ const loginUser = async (req: Request, res: Response) => {
 };
 
 const getCurrentUser = async (req: Request, res: Response) => {
-    const userId = req.user?.id; // Assuming you have user information in the request object
+    const userId = req.user?.id;
     if (!userId) {
         return res.status(401).json({ message: "Unauthorized" });
     }

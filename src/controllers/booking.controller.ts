@@ -27,7 +27,7 @@ const getBooking = async (req : Request, res : Response) => {
         const result = await bookingService.bookingGetData();  
  return res.status(201).json({
     success: true,
-    massage : 'vehicles get successfully',
+    massage : 'booking get successfully',
     data : result .rows
   })
 

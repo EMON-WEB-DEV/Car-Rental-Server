@@ -21,9 +21,33 @@ const userGetData = async () => {
         return result;
 }
 
+const putUserData = async (id: number, payload: Record<string, any>) => {
+        const {name , email , password ,phone , role} = payload;
+        const hashPassword =  await hash(password, 14);
+        const result = await pool.query(`
+    UPDATE users
+    SET name = $1, email = $2, password = $3, phone = $4, role = $5
+    WHERE id = $6
+    RETURNING *
+  `, [name, email, hashPassword, phone, role, id]);
+        return result;
+}
+
+const deleteUserData = async (id: number) => {
+        const result = await pool.query(`
+    DELETE FROM users
+    WHERE id = $1
+    RETURNING *
+  `, [id]);
+        return result;
+}       
+
+
 
 
 export const usersService = {
         userInitialData ,
-        userGetData
+        userGetData ,
+        putUserData,
+        deleteUserData
 }

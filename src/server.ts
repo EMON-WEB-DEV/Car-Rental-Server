@@ -1,10 +1,12 @@
 import express, { Request, Response } from 'express'
 const app = express()
-const port = 5050
-import { initDb,  } from './db/config';
+const port = config.port
+import { initDb,  } from './db/query';
 import { userRouter } from './routes/users.routes';
 import { vehiclesRouter } from './routes/vehicles.routes';
 import { bookingRouter } from './routes/booking.routes';
+import { authRouter } from './routes/auth.routes';
+import config from './index';
 
 
 app.use(express.json());
@@ -19,6 +21,8 @@ app.use('/api/v1/', userRouter,);
 app.use('/api/v1/', vehiclesRouter,);
 
 app.use('/api/v1/', bookingRouter,);
+
+app.use('/api/v1/', authRouter);
 
 
 

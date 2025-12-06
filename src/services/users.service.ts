@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { pool } from "../db/config";
+import { pool } from "../db/query";
 
 const userInitialData = async (payload: Record<string, any>) => {
         const {name , email , password ,phone , role} = payload;
@@ -33,7 +33,7 @@ const userGetData = async () => {
 
 const putUserData = async (id: number, payload: Record<string, any>) => {
         const {name , email , password ,phone , role} = payload;
-        const hashPassword =  await hash(password, 14);
+        const hashPassword =  await bcrypt.hash(password, 14);
         const result = await pool.query(`
     UPDATE users
     SET name = $1, email = $2, password = $3, phone = $4, role = $5

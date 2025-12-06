@@ -1,4 +1,4 @@
-import { pool } from "../db/config";
+import { pool } from "../db/query";
 
 const vehicleInitialData = async (payload: Record<string, unknown>) => {
         const {vehicle_name, type, registration_number, daily_rent_price, availability_status} = payload;

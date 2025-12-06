@@ -1,11 +1,9 @@
 import { Pool } from "pg"
-import dotenv from "dotenv"
-import path from "path"
 
+import config from "..";
 
-dotenv.config({path : path.join(process.cwd(),".env")})
 const pool = new Pool ({
-  connectionString: `${process.env.DB_CONFIG}`
+  connectionString:config.connetdb,
 })
 
 export const initDb = async () => {

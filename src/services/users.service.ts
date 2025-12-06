@@ -13,13 +13,21 @@ const userInitialData = async (payload: Record<string, any>) => {
 }
 
 
-const userGetData = async () => {
+/*const userGetData = async () => {
         
         const result = await pool.query(`
     SELECT * FROM users 
-  `);
+  `); 
         return result;
-}
+}*/
+const userGetData = async () => {
+  const result = await pool.query(`
+    SELECT id, name, email, phone, role
+    FROM users
+  `);
+  return result;
+};
+
 
 const putUserData = async (id: number, payload: Record<string, any>) => {
         const {name , email , password ,phone , role} = payload;

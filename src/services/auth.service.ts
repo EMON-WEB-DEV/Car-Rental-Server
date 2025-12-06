@@ -22,6 +22,15 @@ const loginUser = async (email : string, password : string) => {
 
 };
 
+const getCurrentUser = async (id: number) => {
+    const result = await pool.query(`SELECT id, email, role FROM users WHERE id = $1`, [id]);
+    if (result.rows.length === 0) {
+        return null;
+    }
+    return result.rows[0];
+};
+
 export const authService = {
     loginUser,
+    getCurrentUser,
 };

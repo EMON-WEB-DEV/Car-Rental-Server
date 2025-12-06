@@ -40,7 +40,47 @@ const getBooking = async (req : Request, res : Response) => {
         });
 }
 }
+
+
+const putBookingData = async (req : Request, res : Response) => {
+  const id = parseInt(req.params.id as string);
+  try {
+      const result = await bookingService.putBookingData(id, req.body);
+      return res.status(200).json({
+          success: true,
+          message: 'Booking data updated successfully',
+          data: result.rows[0]
+      });
+  } catch (error) {
+      return res.status(500).json({
+          success: false,
+          message: 'Server Error',
+          error: error
+      });
+  }
+}
+
+const deleteBookingData = async (req : Request, res : Response) => {
+  const id = parseInt(req.params.id as string);
+  try {
+      const result = await bookingService.deleteBookingData(id);
+      return res.status(200).json({
+          success: true,
+          message: 'Booking data deleted successfully',
+          data: result.rows[0]
+      });
+  } catch (error) {
+      return res.status(500).json({
+          success: false,
+          message: 'Server Error',
+          error: error
+      });
+  }
+}
+
 export const bookingController = {
         createBooking,  
-        getBooking
+        getBooking,
+        putBookingData,
+        deleteBookingData
 }

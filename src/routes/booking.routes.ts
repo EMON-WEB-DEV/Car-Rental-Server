@@ -7,10 +7,10 @@ import auth from '../middleware/auth';
 const router = Router();
 
 router.post('/booking',bookingController.createBooking);
-router.get('/booking',auth(),bookingController.getBooking);
-router.get('/booking/:id',auth(),bookingController.getBookingById);
-router.put('/booking/:id',auth(),bookingController.putBookingData);
-router.delete('/booking/:id',auth(),bookingController.deleteBookingData);
+router.get('/booking',auth("admin"),bookingController.getBooking);
+router.get('/booking/:id',auth("admin" ,"user"),bookingController.getBookingById);
+router.put('/booking/:id',auth("admin" ,"user"),bookingController.putBookingData);
+router.delete('/booking/:id',auth("admin" ,"user"),bookingController.deleteBookingData);
         
 
 export const bookingRouter = router;

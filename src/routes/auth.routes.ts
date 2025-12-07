@@ -4,8 +4,8 @@ import { authController } from "../controllers/auth.controller";
 
 const router = Router();
 
-router.post("/auth/login", authController.loginUser);
-router.get("/auth/login/:id", authController.getCurrentUser);
+router.post("/auth/signin", authController.loginUser);
+router.get("/auth/signin/:id", authController.getCurrentUser);
 
 
 export const authRouter = router;

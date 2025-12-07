@@ -39,7 +39,25 @@ const getVehicle = async (req : Request, res : Response) => {
           error: error
         });
 }
-}
+};
+
+const getVehicleById = async (req : Request, res : Response) => {
+  const id = parseInt(req.params.id as string);
+  try {
+      const result = await vehiclesService.vehicleGetDataById(id);
+      return res.status(200).json({
+          success: true,
+          message: 'Vehicle data retrieved successfully',
+          data: result.rows[0]
+      });
+  } catch (error) {
+      return res.status(500).json({
+          success: false,
+          message: 'Server Error',
+          error: error
+      });
+  }
+};
 
 const putVehicleData = async (req : Request, res : Response) => {
   const id = parseInt(req.params.id as string);
@@ -81,6 +99,7 @@ const deleteVehicleData = async (req : Request, res : Response) => {
 export const vehiclesController = {
         createVehicle,  
         getVehicle,
+        getVehicleById,
         putVehicleData,
         deleteVehicleData
 }       

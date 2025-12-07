@@ -18,7 +18,15 @@ const vehicleGetData = async () => {
     SELECT * FROM vehicles 
   `);
         return result;
-}
+};
+
+const vehicleGetDataById = async (id: number) => {
+        const result = await pool.query(`
+    SELECT * FROM vehicles
+    WHERE id = $1
+  `, [id]);
+        return result;
+};
 
 const putVehicleData = async (id: number, payload: Record<string, unknown>) => {
         const {vehicle_name, type, registration_number, daily_rent_price, availability_status} = payload;
@@ -46,6 +54,7 @@ const deleteVehicleData = async (id: number) => {
  export const vehiclesService = {
         vehicleInitialData,
         vehicleGetData,
+        vehicleGetDataById,
         putVehicleData,
         deleteVehicleData
 }

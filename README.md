@@ -95,7 +95,7 @@ npm start
 
 Server will run on:
 
-http://localhost:4000
+http://localhost:5050
 
 🧪 API Usage
 

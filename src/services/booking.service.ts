@@ -18,6 +18,16 @@ const bookingGetData = async () => {
   `);
         return result;
 }
+
+const bookingGetDataById = async (id: number) => {
+        const result = await pool.query(`
+    SELECT * FROM bookings
+    WHERE id = $1
+  `, [id]);
+        return result;
+};
+
+
 const putBookingData = async (id: number, payload: Record<string, unknown>) => {
         const {customer_id, vehicle_id, rent_start_date, rent_end_date,total_price, status} = payload;
         const result = await pool.query(`
@@ -41,6 +51,7 @@ const deleteBookingData = async (id: number) => {
  export const bookingService = {
         bookingInitialData,
         bookingGetData,
+        bookingGetDataById,
         putBookingData,
         deleteBookingData
 }

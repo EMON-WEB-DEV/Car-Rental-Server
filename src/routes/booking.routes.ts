@@ -8,6 +8,7 @@ const router = Router();
 
 router.post('/booking',bookingController.createBooking);
 router.get('/booking',auth(),bookingController.getBooking);
+router.get('/booking/:id',auth(),bookingController.getBookingById);
 router.put('/booking/:id',auth(),bookingController.putBookingData);
 router.delete('/booking/:id',auth(),bookingController.deleteBookingData);
         
